@@ -1,0 +1,23 @@
+{
+  "name": "typed-machines",
+  "version": "1.0.0",
+  "description": "Creating strictly typed State Machines",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alajfit/typed-machines.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alajfit/typed-machines/issues"
+  },
+  "homepage": "https://github.com/alajfit/typed-machines#readme",
+  "dependencies": {
+    "xstate": "^4.6.7"
+  }
+}
