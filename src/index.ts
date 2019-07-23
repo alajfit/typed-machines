@@ -1,4 +1,7 @@
 import { Machine } from 'xstate'
+import {
+    DefaultContext
+} from 'xstate/lib/types'
 
 enum TYPES {
     ATOMIC = 'atomic',
@@ -13,25 +16,30 @@ interface MachineValue {
     type: TYPES
 }
 
-class xMachine {
+class xState {
     private id: string
+
+    constructor(
+        id: string
+    ) {
+        this.id = id
+    }
+}
+
+class xMachine extends xState {
     private initial: string
-    private context: object
+    private context: DefaultContext
     private states: object = {}
-    private type: TYPES
     private transitions: [] = []
 
     constructor(
-        id: string,
-        type: TYPES = TYPES.COMPOUND
+        id: string
     ) {
-        this.id = id
-        this.type = type
+        super(id)
     }
 
     parallel(id: string, machine) {
         this.states[id] = machine
-        this.type = TYPES.PARALLEL
     }
 
     state(id: string, machine) {
@@ -39,3 +47,13 @@ class xMachine {
     }
 }
 
+class xChart extends xMachine {
+    private type: TYPES
+
+    constructor(
+        id: string
+    ) {
+        super(id)
+        this.type = TYPES.PARALLEL
+    }
+}
